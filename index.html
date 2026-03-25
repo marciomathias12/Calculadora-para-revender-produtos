@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yuanwarecalculator | Elite Import Suite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDFCF5;
+            --black: #111111;
+            --red: #D0021B;
+            --zinc-light: #F3F4F6;
+        }
+        body {
+            background-color: var(--cream);
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-mono { font-family: 'Space Mono', monospace; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .luxury-shadow { 
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08); 
+        }
+        
+        .luxury-button { 
+            background: var(--black); 
+            color: var(--cream); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 9999px;
+        }
+        .luxury-button:hover { 
+            background: transparent; 
+            color: var(--black);
+            box-shadow: 0 0 0 2px var(--black);
+            transform: translateY(-2px);
+        }
+        
+        .text-red { color: var(--red); }
+        .bg-red { background-color: var(--red); }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+
+        input:focus { outline: none; border-bottom: 2px solid var(--black); }
+        input { border-radius: 12px !important; }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+      // Pre-emptive fix for "Cannot set property fetch of #<Window> which has only a getter"
+      // This happens when some libraries try to polyfill fetch in restricted environments.
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return originalFetch; },
+              set: function() { console.warn('Supressing attempt to overwrite fetch'); },
+              configurable: true
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+</body>
+</html>
